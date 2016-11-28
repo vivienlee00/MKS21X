@@ -1,1 +1,5 @@
-test commands lol
+cd .ssh
+git clone repoAddress
+git add fileName
+git commit -m "message"
+git push -u origin master
