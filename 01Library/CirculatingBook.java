@@ -3,6 +3,16 @@ public class CirculatingBook extends LibraryBook {
     private String currentHolder;
     private String dueDate;
 
+    public CirculatingBook(String a, String b, String c, String d) {
+	super.setAuthor(a);
+	super.setTitle(b);
+	super.setISBN(c);
+	super.setCallNumber(d);
+	currentHolder = null;
+	dueDate = null;
+    }
+
+
     public String getHolder(){
 	return currentHolder;
     }
