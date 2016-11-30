@@ -8,8 +8,8 @@ public class CirculatingBook extends LibraryBook {
 	super.setTitle(b);
 	super.setISBN(c);
 	super.setCallNumber(d);
-	currentHolder = null;
-	dueDate = null;
+	currentHolder = "";
+	dueDate = "";
     }
 
 
@@ -35,13 +35,13 @@ public class CirculatingBook extends LibraryBook {
     }
 
     public void returned(){
-	currentHolder = null;
-	dueDate = null;
+	currentHolder = "";
+	dueDate = "";
     }
 
     public String circulationStatus(){
 	if (currentHolder == null){
-	    return ("Book available on shelves");
+	    return (" Book available on shelves ");
 	}
 	else{
 	    return (currentHolder + " " + dueDate);

@@ -24,19 +24,19 @@ public class ReferenceBook extends LibraryBook {
     }
 
     public void checkout(String patron, String due) {
-	System.out.println("You cannot check out a reference book.");
+	System.out.println(" You cannot check out a reference book. ");
     }
 
     public void returned() {
-	System.out.println("Reference book could not have been checked out -- return impossible.");
+	System.out.println(" Reference book could not have been checked out -- return impossible. ");
     }
 
     public String circulationStatus() {
-	return ("Non-circulating reference book");
+	return (" Non-circulating reference book ");
     }
 
     public String toString() {
-	return (super.toString() + collection);
+	return (super.toString() + " " + collection);
     }
 }
 	   
