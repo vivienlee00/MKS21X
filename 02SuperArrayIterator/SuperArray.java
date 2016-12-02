@@ -191,6 +191,10 @@ public class SuperArray implement Iterable<String>  {
 	return end;
     }
 
+    public Iterator<String> iterator() {
+	//	return 
+    }
+
       
 
 }
