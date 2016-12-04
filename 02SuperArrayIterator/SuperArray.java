@@ -1,5 +1,5 @@
-
-public class SuperArray implement Iterable<String>  {
+import java.util.*;
+public class SuperArray implements Iterable<String>  {
     
     private String[] data;
     private int size;
@@ -192,10 +192,12 @@ public class SuperArray implement Iterable<String>  {
     }
 
     public Iterator<String> iterator() {
-	//	return 
+       	return new SuperArrayIterator(this);
     }
+
+}
 
       
 
-}
+
 

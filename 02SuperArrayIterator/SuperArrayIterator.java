@@ -2,25 +2,27 @@ import java.util.Iterator;
 
 public class SuperArrayIterator implements Iterator<String> {
 
-    private SuperArray data;
+    private SuperArray info;
     private int current;
 
 
     public SuperArrayIterator(SuperArray ary) {
-	data = ary;
+	info = ary;
 	current = 0;
     }
 
     public boolean hasNext(){
-	if (current < data.size()){
+	if (current < info.size() - 1){
 	    return true;
 	}
 	return false;
     }
 
     public String next(){
-	current += 1;
-	return (data.get(current));
+	int temp = current;
+	if (info.hasNext()){
+	    current += 1;}
+	return info.get(temp);
     }
 
     public void remove(){
