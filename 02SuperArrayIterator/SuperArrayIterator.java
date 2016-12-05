@@ -1,4 +1,4 @@
-import java.util.Iterator;
+import java.util.*;
 
 public class SuperArrayIterator implements Iterator<String> {
 
@@ -12,17 +12,20 @@ public class SuperArrayIterator implements Iterator<String> {
     }
 
     public boolean hasNext(){
-	if (current < info.size() - 1){
+	if (current < info.size()){
 	    return true;
 	}
 	return false;
     }
 
     public String next(){
-	int temp = current;
-	if (info.hasNext()){
-	    current += 1;}
-	return info.get(temp);
+	if (hasNext()){
+	    current++;
+	    return info.get(current-1);
+	}
+	else{
+	    throw new NoSuchElementException();
+	}
     }
 
     public void remove(){
