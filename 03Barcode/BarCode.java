@@ -23,16 +23,16 @@ public class Barcode implements Comparable<Barcode>{
       }
 	      
       _zip =  zip;
-      _checkDigit = this.checkSum();
+      _checkDigit = checkSum(zip);
   }
 
 
 
 // postcondition: computes and returns the check sum for _zip
-  private int checkSum(){
+  private static int checkSum(String zip){
       int sum = 0;
       for (int i = 0; i < 5; i++){
-	  sum += Integer.parseInt(_zip.substring(i, i+1));
+	  sum += Integer.parseInt(zip.substring(i, i+1));
       }
       return (sum % 10);
       
@@ -61,6 +61,30 @@ public class Barcode implements Comparable<Barcode>{
 	return code;
     }
 
+ public static String codeToDigit(String code){
+	String code = "";
+
+	switch(code){
+
+	case "||:::": code += "0"; break;
+	case ":::||": code += "1"; break;
+	case "::|:|": code += "2"; break;
+	case "::||:": code += "3"; break;
+	case ":|::|": code += "4"; break;
+	case "::|:|": code += "5"; break;
+	case ":||::": code += "6"; break;
+	case "|:::|": code += "7"; break;
+	case "|::|:": code += "8"; break;
+	case "|:|::": code += "9"; break;
+	}
+    
+	if (code.equals("")){
+	    throw new IllegalArgumentException("Invalid barcode entered");
+	}
+
+	return code;
+    }
+
 
     
     public static String toCode(String zip){
@@ -77,6 +101,36 @@ public class Barcode implements Comparable<Barcode>{
 	return x;
     }
 			     
+    public static String toZip(String code){
+	String x = "";
+
+	/*  
+	    Throws:
+	    java.lang.IllegalArgumentException - when:
+	    
+	    checksum is invalid
+	    encoded ints are invalid
+	    non-barcode characters are used
+	    length of the barcode is not 32
+	    the left and rigthmost charcters are not '|'
+	*/
+
+	//	try{
+
+	for(int i = 1; i < 26; i += 5){
+	   x +=  codeToDigit(code.substring(i, i+5));
+	}
+
+	//	}
+	//	catch(IllegalArgumentException e){
+
+	if(checkSum(x.substring(0,5)) != (x.substring(5))){
+	    throw new IllegalArgumentException("Wrong checkSum");
+	}
+
+	return x;
+    }
+
 
     public String toString(){
 	String x = "" + this._zip + _checkDigit;
