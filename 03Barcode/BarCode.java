@@ -62,27 +62,27 @@ public class Barcode implements Comparable<Barcode>{
     }
 
  public static String codeToDigit(String code){
-	String code = "";
+	String zip = "";
 
 	switch(code){
 
-	case "||:::": code += "0"; break;
-	case ":::||": code += "1"; break;
-	case "::|:|": code += "2"; break;
-	case "::||:": code += "3"; break;
-	case ":|::|": code += "4"; break;
-	case "::|:|": code += "5"; break;
-	case ":||::": code += "6"; break;
-	case "|:::|": code += "7"; break;
-	case "|::|:": code += "8"; break;
-	case "|:|::": code += "9"; break;
+	case "||:::": zip += "0"; break;
+	case ":::||": zip += "1"; break;
+	case "::|:|": zip += "2"; break;
+	case "::||:": zip += "3"; break;
+	case ":|::|": zip += "4"; break;
+	case ":|:|:": zip += "5"; break;
+	case ":||::": zip += "6"; break;
+	case "|:::|": zip += "7"; break;
+	case "|::|:": zip += "8"; break;
+	case "|:|::": zip += "9"; break;
 	}
     
 	if (code.equals("")){
 	    throw new IllegalArgumentException("Invalid barcode entered");
 	}
 
-	return code;
+	return zip;
     }
 
 
@@ -117,6 +117,24 @@ public class Barcode implements Comparable<Barcode>{
 
 	//	try{
 
+	for (int i = 0; i < code.length(); i++){
+	    if ((code.charAt(i) == ':') &&
+		(code.charAt(i) == '|'))
+		{throw new IllegalArgumentException("Not a barcode");
+		}
+	}
+
+	if (code.length() != 32){
+	    throw new IllegalArgumentException("Wrong length");
+	}
+
+	if ((code.charAt(0) != '|') ||
+	    (code.charAt(31) != '|')){
+	    throw new IllegalArgumentException("No guardrails");
+	}
+
+
+	
 	for(int i = 1; i < 26; i += 5){
 	   x +=  codeToDigit(code.substring(i, i+5));
 	}
@@ -124,7 +142,7 @@ public class Barcode implements Comparable<Barcode>{
 	//	}
 	//	catch(IllegalArgumentException e){
 
-	if(checkSum(x.substring(0,5)) != (x.substring(5))){
+	if(checkSum(x.substring(0,5)) != (Integer.parseInt(x.substring(5)))){
 	    throw new IllegalArgumentException("Wrong checkSum");
 	}
 
@@ -161,6 +179,7 @@ public class Barcode implements Comparable<Barcode>{
 	System.out.println(a.toString());
 	System.out.println(toCode("08451"));
 	System.out.println(a.compareTo(b));
-	
+	System.out.println(toZip("|||:::|::|::|::|::|:|:::|||::|:|"));
+
     }
 }
