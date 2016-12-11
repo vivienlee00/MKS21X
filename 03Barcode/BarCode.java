@@ -51,7 +51,7 @@ public class Barcode implements Comparable<Barcode>{
 	case 2: code += "::|:|"; break;
 	case 3: code += "::||:"; break;
 	case 4: code += ":|::|"; break;
-	case 5: code += "::|:|"; break;
+	case 5: code += ":|:|:"; break;
 	case 6: code += ":||::"; break;
 	case 7: code += "|:::|"; break;
 	case 8: code += "|::|:"; break;
@@ -78,7 +78,7 @@ public class Barcode implements Comparable<Barcode>{
 	case "|:|::": zip += "9"; break;
 	}
     
-	if (code.equals("")){
+	if (zip.equals("")){
 	    throw new IllegalArgumentException("Invalid barcode entered");
 	}
 
@@ -118,8 +118,8 @@ public class Barcode implements Comparable<Barcode>{
 	//	try{
 
 	for (int i = 0; i < code.length(); i++){
-	    if ((code.charAt(i) == ':') &&
-		(code.charAt(i) == '|'))
+	    if ((code.charAt(i) != ':') &&
+		(code.charAt(i) != '|'))
 		{throw new IllegalArgumentException("Not a barcode");
 		}
 	}
@@ -142,9 +142,9 @@ public class Barcode implements Comparable<Barcode>{
 	//	}
 	//	catch(IllegalArgumentException e){
 
-	if(checkSum(x.substring(0,5)) != (Integer.parseInt(x.substring(5)))){
+	/*	if(checkSum(x.substring(0,5)) != (Integer.parseInt(x.substring(5)))){
 	    throw new IllegalArgumentException("Wrong checkSum");
-	}
+	    }*/
 
 	return x;
     }
@@ -179,7 +179,7 @@ public class Barcode implements Comparable<Barcode>{
 	System.out.println(a.toString());
 	System.out.println(toCode("08451"));
 	System.out.println(a.compareTo(b));
-	System.out.println(toZip("|||:::|::|::|::|::|:|:::|||::|:|"));
+	System.out.println(toZip("|||:::|::|::|::|:|:|:::::::::|:|"));
 
     }
 }
