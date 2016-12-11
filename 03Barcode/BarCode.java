@@ -142,9 +142,9 @@ public class Barcode implements Comparable<Barcode>{
 	//	}
 	//	catch(IllegalArgumentException e){
 
-	/*	if(checkSum(x.substring(0,5)) != (Integer.parseInt(x.substring(5)))){
+	if(checkSum(x.substring(0,4)) != (Integer.parseInt(x.substring(5)))){
 	    throw new IllegalArgumentException("Wrong checkSum");
-	    }*/
+	    }
 
 	return x;
     }
@@ -173,13 +173,4 @@ public class Barcode implements Comparable<Barcode>{
   }
 
 
-    public static void main(String[]args){
-	Barcode a = new Barcode("08451");
-	Barcode b= new Barcode("12345");
-	System.out.println(a.toString());
-	System.out.println(toCode("08451"));
-	System.out.println(a.compareTo(b));
-	System.out.println(toZip("|||:::|::|::|::|:|:|:::::::::|:|"));
-
-    }
 }
