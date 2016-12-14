@@ -16,8 +16,6 @@ public class Sorts{
             lowest = data[q];
             lowestindex= q;
         }
-
-
         }
 
         int temp = data[i];
@@ -25,9 +23,23 @@ public class Sorts{
         data[lowestindex] = temp;
 
     }
+    }
 
-
-
+    public static void insertionSort(int[] data){
+	int correctindex = 0;
+	for (int i = 1; i < data.length; i++){
+	    int current = i - 1;
+	    while(data[current] > data[i]){
+		current--;
+	    }
+	    correctindex = current;
+	    int temp = data[correctindex];
+	    
+	    data[correctindex] = data[i];
+	    
+	}
+		
+	}
     }
 
     public static String toString(int[] data) {
