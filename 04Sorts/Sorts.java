@@ -1,7 +1,7 @@
 public class Sorts{
 
     public static String name(){
-    return "06.Lee.Vivien";
+    return "period06.Lee.Vivien";
     }
 
     public static void selectionSort(int[] data){
