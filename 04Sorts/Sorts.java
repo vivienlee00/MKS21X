@@ -58,7 +58,7 @@ public class Sorts{
    // 12, 25, 64, 22, 11;
 
     public static void bubbleSort(int[] data){
-
+	
 	for (int p = 0; p < data.length; p++){
 	    int swaps = 0;
 	    for (int n = 0; n < data.length - (p + 1); n++){
@@ -84,27 +84,22 @@ public class Sorts{
     }
 
     public static void main(String[] args){
-    int[] x = {64,25,12,22,11};
-    int[] y = {100, 0, 10};
-    int[] z = {0, 100, 10, 50};
-    int[] s = {100, 99, 98, 97};
 
-    System.out.println(toString(x));
-    bubbleSort(x);
-    System.out.println(toString(x));
+	long starttime, endtime;
+	int[] x =  new int[10000];
 
+	for(int i = 0; i < 10000; i++){
+	    x[i] = (int)(Math.random() * 100);
+	}
+	
+	starttime = System.currentTimeMillis();
 
-    System.out.println(toString(y));
-    bubbleSort(y);
-    System.out.println(toString(y));
+	insertionSort(x);	
 
-    System.out.println(toString(z));
-    bubbleSort(z);
-    System.out.println(toString(z));
-
-    System.out.println(toString(s));
-    bubbleSort(s);
-    System.out.println(toString(s));
+	endtime = System.currentTimeMillis();
+	
+	
+	System.out.println("" + (endtime - starttime) + " milliseconds");
     }
-
+    
 }
