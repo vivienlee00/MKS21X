@@ -57,6 +57,24 @@ public class Sorts{
    // 25, 64, 12, 22, 11;
    // 12, 25, 64, 22, 11;
 
+    public static void bubbleSort(int[] data){
+
+	for (int p = 0; p < data.length; p++){
+	    int swaps = 0;
+	    for (int n = 0; n < data.length - (p + 1); n++){
+		while(data[n] > data[n+1]){
+		    int temp = data[n+1];
+		    data[n+1] = data[n];
+		    data[n] = temp;
+		    swaps++;
+		}
+	    }
+	    if (swaps == 0){
+		return;
+	    }
+	}
+    }
+
     public static String toString(int[] data) {
     String str = "[";
     for (int i = 0; i < data.length; i += 1)
@@ -69,21 +87,24 @@ public class Sorts{
     int[] x = {64,25,12,22,11};
     int[] y = {100, 0, 10};
     int[] z = {0, 100, 10, 50};
+    int[] s = {100, 99, 98, 97};
 
     System.out.println(toString(x));
-    insertionSort(x);
+    bubbleSort(x);
     System.out.println(toString(x));
 
 
     System.out.println(toString(y));
-    insertionSort(y);
+    bubbleSort(y);
     System.out.println(toString(y));
 
     System.out.println(toString(z));
-    insertionSort(z);
+    bubbleSort(z);
     System.out.println(toString(z));
+
+    System.out.println(toString(s));
+    bubbleSort(s);
+    System.out.println(toString(s));
     }
-
-
 
 }
