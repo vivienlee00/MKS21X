@@ -1,12 +1,29 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
-public class tempgui extends JFrame {
+public class tempgui extends JFrame implements ActionListener{
     
     private Container pane;
-    private JButton f;
-    private JButton c;
+    private JButton f, c;
     private JTextField text;
+    private JLabel end;
+
+    public void actionPerformed(ActionEvent e){
+
+	if (e.getSource() == f){
+	    double converted =
+		(temperature.FtoC(Double.parseDouble(text.getText())));
+	    end.setText("" + converted);
+	}
+	
+	if (e.getSource() == c){
+	    double converted =
+		(temperature.CtoF(Double.parseDouble(text.getText())));
+	    end.setText("" + converted);
+	}
+    }
+
     
     //CONSTRUCTOR SETS EVERYTHING UP
     public tempgui() {
@@ -21,9 +38,16 @@ public class tempgui extends JFrame {
      f = new JButton("Fahrenheit to Celsius");
      c = new JButton("Celsius to Fahrenheit");
      text = new JTextField(5);
+     end = new JLabel();
      pane.add(f);
      pane.add(text);
      pane.add(c);
+     pane.add(end);
+
+     f.addActionListener(this);
+     c.addActionListener(this);
+     
+     
     }
 
     //MAIN JUST INSTANTIATES + MAKE VISIBLE
@@ -31,12 +55,6 @@ public class tempgui extends JFrame {
 	tempgui g = new tempgui();
 	g.setVisible(true);
 
-	if(f.getModel().isPressed())
-	    {
-		JLabel e = new JLabel("" + (temperature.FtoC(Double.parseDouble(text.getText()))));
-		pane.add(e);
-		e.setVisible(true);
-	    }
     }
     
 }
