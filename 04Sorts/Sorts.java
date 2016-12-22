@@ -86,16 +86,16 @@ public class Sorts{
     public static void main(String[] args){
 
 	long starttime, endtime;
-	int[] x =  new int[10000];
+	int[] x =  new int[0];
 
-	for(int i = 0; i < 10000; i++){
-	    x[i] = (int)(Math.random() * 100);
-	}
-	
 	starttime = System.currentTimeMillis();
 
-	insertionSort(x);	
-
+	bubbleSort(x);	
+	System.out.println(toString(x));
+	insertionSort(x);
+	System.out.println(toString(x));
+	bubbleSort(x);
+	System.out.println(toString(x));
 	endtime = System.currentTimeMillis();
 	
 	
